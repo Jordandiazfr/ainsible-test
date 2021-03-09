@@ -1,0 +1,1 @@
+ansible-playbook deploy.yml -i .hosts --key-file jojo_key.pem -vvv

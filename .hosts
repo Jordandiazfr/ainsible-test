@@ -1,0 +1,10 @@
+[webservers]
+# Add hosts here
+20.185.150.244
+
+
+[webservers:vars]
+# Local variables for Ansible playbooks
+ansible_ssh_user=jojovm
+github_user=jordandiazfr
+app_name=flask-ansible-example  # aligned with github repo name
