@@ -2,7 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+jojo.txt
 # C extensions
 *.so
 .pem
