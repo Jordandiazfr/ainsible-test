@@ -43,10 +43,10 @@
     - name: install modules in a virtualenv
       pip:
         requirements: /home/{{ ansible_ssh_user }}/{{ app_name }}/requirements.txt
-        virtualenv: /home/{{ ansible_ssh_user }}/{{ app_name }}/venv
+        virtualenv: /home/{{ ansible_ssh_user }}/{{ app_name }}/env
         virtualenv_python: python3.8
       tags:
-        - venv
+        - env
 
 # Configure app systemd service and nginx
 - hosts: webservers
