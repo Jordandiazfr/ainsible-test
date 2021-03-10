@@ -12,12 +12,12 @@ load_dotenv(dotenv_path)
 
 class PostGreSQL:
     def __init__(self):
-        self.host = os.getenvb('HOST')
-        self.db_name = os.getenvb('DBNAME')
-        self.user = os.getenvb('USER')
-        self.password = os.getenvb('PASS')
+        self.host = os.environ.get('HOST')
+        self.db_name = os.environ.get('DBNAME')
+        self.user = os.environ.get('USER')
+        self.password = os.environ.get('PASS')
         self.sslmode = "require"
-        self.port = os.getenvb('PORT',)
+        self.port = os.environ.get('PORT')
 
     def connect(self):
         # Construct connection string
