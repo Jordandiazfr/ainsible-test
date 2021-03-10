@@ -1,11 +1,23 @@
 from flask import Flask, jsonify
 import os
+from dbserver import PostGreSQL
 app = Flask(__name__)
+
+db = PostGreSQL()
+
+db.create_table("jojo")
+db.insert("jojo", ["My test jojo"])
 
 
 @app.route("/")
 def index():
     return "hello world"
+
+
+@app.route("/db")
+def showdb():
+    result = db.select("jojo")
+    return jsonify(result)
 
 
 @app.route("/<env_var>")

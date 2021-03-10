@@ -1,5 +1,18 @@
 # Ansible playbook for deploying a Flask app
 ---
+# Copy the env
+- hosts: webservers
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: Copy file with owner and permissions
+      ansible.builtin.copy:
+        src: ./.env
+        dest: /home/jojovm/ainsible-test/.env
+        owner: jojovm
+        group: jojovm
+        mode: "0644"
+
 # Install system apt packages
 - hosts: webservers
   become: yes
@@ -40,6 +53,7 @@
         repo: "https://github.com/{{ github_user }}/{{ app_name }}.git"
         dest: /home/{{ ansible_ssh_user }}/{{ app_name }}
         update: yes # Does a git pull if the repo already exists
+        force: yes
     - name: install modules in a virtualenv
       pip:
         requirements: /home/{{ ansible_ssh_user }}/{{ app_name }}/requirements.txt
