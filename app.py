@@ -1,10 +1,11 @@
 from flask import Flask, jsonify
+import os
 app = Flask(__name__)
 
 
 @app.route("/")
 def hello():
-    return 'Jordan here :)'
+    return os.environ.get['jojo']
 
 
 @app.route("/health")
