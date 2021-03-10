@@ -2,18 +2,22 @@ import psycopg2
 from psycopg2 import Error
 import os
 from dotenv import load_dotenv
+from dotenv import dotenv_values
+from os.path import join, dirname
+from dotenv import load_dotenv
 
-load_dotenv(verbose=True)
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
 
 
 class PostGreSQL:
     def __init__(self):
-        self.host = os.getenv('HOST')
-        self.db_name = os.getenv('DBNAME')
-        self.user = os.getenv('USER')
-        self.password = os.getenv('PASS')
+        self.host = os.getenvb('HOST')
+        self.db_name = os.getenvb('DBNAME')
+        self.user = os.getenvb('USER')
+        self.password = os.getenvb('PASS')
         self.sslmode = "require"
-        self.port = os.getenv('PORT')
+        self.port = os.getenvb('PORT',)
 
     def connect(self):
         # Construct connection string

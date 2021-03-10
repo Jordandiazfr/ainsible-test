@@ -11,7 +11,3 @@ ansible_ssh_pipelining= true
 
 #aligned with github repo name
 app_name=ainsible-test  
-
-env_vars:
-  VAR1: key1
-  VAR2: key2

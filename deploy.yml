@@ -58,7 +58,7 @@
       pip:
         requirements: /home/{{ ansible_ssh_user }}/{{ app_name }}/requirements.txt
         virtualenv: /home/{{ ansible_ssh_user }}/{{ app_name }}/env
-        virtualenv_python: python2.7
+        virtualenv_python: python3.8
       tags:
         - env
 
