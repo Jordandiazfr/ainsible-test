@@ -5,9 +5,9 @@ import random
 app = Flask(__name__)
 
 r = random.randint(1, 9)
-db = PostGreSQL()
+#db = PostGreSQL()
 
-db.create_table("jojo")
+# db.create_table("jojo")
 data = "Test" + str(r)
 #db.insert("jojo", data)
 
@@ -19,8 +19,8 @@ def index():
 
 @app.route("/db")
 def showdb():
-    result = db.select("jojo")
-    return jsonify(result)
+    #result = db.select("jojo")
+    return jsonify("result")
 
 
 @app.route("/health")
