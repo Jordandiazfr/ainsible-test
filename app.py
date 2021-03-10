@@ -23,14 +23,6 @@ def showdb():
     return jsonify(result)
 
 
-@app.route("/<env_var>")
-def check_var(env_var):
-    if env_var in os.environ:
-        return(f'{env_var} value is {os.environ[env_var]}')
-    else:
-        return(f'{env_var} does not exist')
-
-
 @app.route("/health")
 def health():
     return jsonify({'status': 'ok'})
