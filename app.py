@@ -7,7 +7,7 @@ a = os.environ.get('jojo')
 
 @app.route("/")
 def hello():
-    return ("Hello" + a)
+    return ("Hello world")
 
 
 @app.route("/health")
