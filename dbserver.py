@@ -58,9 +58,10 @@ class PostGreSQL:
         conn = self.connect()
         c = conn.cursor()
         if data != "":
-            query = f"INSERT INTO {table} (title) VALUES (%s);"
-            new_data = (data[0])
-            c.execute(query, new_data)
+            query = """INSERT INTO %s (title) VALUES (%s);""" % (
+                table, data)
+            #new_data = data
+            c.execute(query)
             conn.commit()
             c.close()
             conn.close()

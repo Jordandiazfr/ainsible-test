@@ -1,12 +1,15 @@
 from flask import Flask, jsonify
 import os
 from dbserver import PostGreSQL
+import random
 app = Flask(__name__)
 
+r = random.randint(1, 9)
 db = PostGreSQL()
 
 db.create_table("jojo")
-db.insert("jojo", ["My test jojo"])
+data = "Test" + str(r)
+#db.insert("jojo", data)
 
 
 @app.route("/")
