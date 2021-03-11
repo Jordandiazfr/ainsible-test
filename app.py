@@ -17,6 +17,11 @@ def index():
     return render_template("index.html")
 
 
+@app.route("/<nroute>")
+def route(nroute):
+    return render_template("route.html", route=nroute)
+
+
 @app.route("/db")
 def showdb():
     #result = db.select("jojo")
