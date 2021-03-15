@@ -20,8 +20,8 @@ class PostGreSQL:
         # self.port = os.environ.get('PORT')
         self.host = "localhost"
         self.db_name = "postgres"
-        self.user = "postgres"
-        self.password = ""
+        self.user = "test"
+        self.password = "pw"
         self.sslmode = "require"
         self.port = "5432"
 

@@ -34,11 +34,15 @@
         - gunicorn
         - postgresql
         - postgresql-client
+        - libpq-dev
 
     #Install VirtualEnv
     - name: Install virtualenv via pip
       pip:
         name: virtualenv
+        executable: pip3
+      pip:
+        name: psycopg2
         executable: pip3
       become: yes
       become_user: root
@@ -57,7 +61,7 @@
       pip:
         requirements: /home/{{ ansible_ssh_user }}/{{ app_name }}/requirements.txt
         virtualenv: /home/{{ ansible_ssh_user }}/{{ app_name }}/env
-        virtualenv_python: python3.8
+        virtualenv_python: python3
       tags:
         - env
 
@@ -105,3 +109,20 @@
     - name: check for string in html
       when: html_contents.stdout.find('hello') != -1
       debug: msg="success!"
+
+    # UPDATE THE PSQL DATABASE
+
+    - name: Create user psql
+      become: yes
+      become_user: postgres
+      postgresql_user:
+        name: "test"
+        password: "pw"
+        role_attr_flags: "CREATEDB,NOSUPERUSER"
+
+    - name: Create database
+      become: yes
+      become_user: postgres
+      postgresql_db:
+        name: "dbtest"
+        owner: "postgres"
